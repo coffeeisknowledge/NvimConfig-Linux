@@ -1,5 +1,9 @@
 return {
   {
+    "mfussenegger/nvim-jdtls",
+  },
+
+  {
     "akinsho/flutter-tools.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
