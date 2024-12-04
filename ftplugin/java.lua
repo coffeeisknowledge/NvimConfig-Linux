@@ -160,8 +160,12 @@ local config = {
   },
 }
 
+vim.list_extend(config.init_options.bundles, require("spring_boot").java_extensions())
+
+
 config["on_attach"] = function(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set("n", "<leader>gd", vim.lsp.buf.hover, bufopts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
@@ -171,6 +175,9 @@ config["on_attach"] = function(_, bufnr)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+
+
+
   vim.keymap.set("n", "<A-o>", jdtls.organize_imports, bufopts)
 
   jdtls.setup.add_commands()

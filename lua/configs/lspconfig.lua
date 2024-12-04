@@ -23,7 +23,7 @@ local cmd =
 
 -- configuring single server, example: typescript
 --
---
+
 local function organize_imports()
   local params = {
     command = "_typescript.organizeImports",

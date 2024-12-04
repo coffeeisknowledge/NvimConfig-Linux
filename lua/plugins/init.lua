@@ -1,5 +1,36 @@
 return {
   {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function ()
+      local harpoon = require("harpoon")
+      harpoon.setup()
+    end
+  },
+
+  {
+    "elmcgill/springboot-nvim",
+    ft = { "java" },
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-jdtls",
+    },
+    config = function()
+      local springboot_nvim = require("springboot-nvim")
+      springboot_nvim.setup {}
+    end,
+  },
+  {
+    "JavaHello/spring-boot.nvim",
+    ft = "java",
+    dependencies = {
+      "mfussenegger/nvim-jdtls", -- or nvim-java, nvim-lspconfig
+      "ibhagwan/fzf-lua", -- 可选
+    },
+  },
+
+  {
     "mfussenegger/nvim-jdtls",
   },
 
@@ -74,7 +105,7 @@ return {
 
   {
     "christoomey/vim-tmux-navigator",
-    lazy = false
+    lazy = false,
   },
   {
     "stevearc/conform.nvim",
@@ -119,12 +150,15 @@ return {
   },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+      },
+    },
   },
 }
