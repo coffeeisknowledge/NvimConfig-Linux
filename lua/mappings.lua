@@ -40,12 +40,12 @@ map("n", "md", function() harpoon:list():remove() end, {desc = "Harpoon delete m
 map("n", "mc", function() harpoon:list():clear() end, {desc = "Harpoon clear"})
 map("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-map("n", "mq", function() harpoon:list():select(1) end)
-map("n", "mw", function() harpoon:list():select(2) end)
-map("n", "me", function() harpoon:list():select(3) end)
-map("n", "mr", function() harpoon:list():select(4) end)
+map("n", "mq", function() harpoon:list():select(1) end, { desc = "harpoon 1"})
+map("n", "mw", function() harpoon:list():select(2) end, { desc = "harpoon 2"})
+map("n", "me", function() harpoon:list():select(3) end, { desc = "harpoon 3"})
+map("n", "mr", function() harpoon:list():select(4) end, { desc = "harpoon 4"})
 
-map("n", "<C-j>", function() harpoon:list():prev() end)
-map("n", "<C-k>", function() harpoon:list():next() end)
+map("n", "<A-j>", function() harpoon:list():prev() end, { desc = "harpoon list prev"})
+map("n", "<A-k>", function() harpoon:list():next() end, { desc = "harpoon list next"})
 
 -- map({ "n", "i", "v" k}, "<C-s>", "<cmd> w <cr>")

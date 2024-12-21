@@ -12,14 +12,15 @@ M.ui = {
     lspkind_text = true,
     style = "default",
     border_color = "nord_blue",
-    selected_item_bg = "colored"
+    selected_item_bg = "colored",
   },
   tabufline = {
     enabled = true,
     lazyload = true,
   },
   statusline = {
-    theme = "vscode_colored"
+    theme = "vscode_colored",
+    -- separator_style = "round",
   },
   telescope = {
     style = "borderless"
@@ -50,8 +51,8 @@ M.nvdash = {
 }
 
 M.base46 = {
-	theme = "solarized_dark",
-  transparency = true,
+	theme = "solarized_osaka",
+  transparency = false,
 
   hl_add = {
     NvimTreeOpenedFolderName = {fg = "blue", bold = true},
