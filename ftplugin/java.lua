@@ -50,7 +50,7 @@ local config = {
   root_dir = root_dir,
   settings = {
     java = {
-      autobuild = { enabled = true },
+      autobuild = { enabled = false },
       project = {
         encoding = "UTF-8",
       },
@@ -175,12 +175,9 @@ config["on_attach"] = function(_, bufnr)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-
-
-
   vim.keymap.set("n", "<A-o>", jdtls.organize_imports, bufopts)
 
-  jdtls.setup.add_commands()
+  -- jdtls.setup.add_commands()
   vim.lsp.codelens.refresh()
 
   vim.api.nvim_create_autocmd("BufWritePost", {

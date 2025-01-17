@@ -7,6 +7,7 @@ local M = {}
 
 
 M.ui = {
+
   cmp = {
     icons = true,
     lspkind_text = true,
@@ -51,8 +52,8 @@ M.nvdash = {
 }
 
 M.base46 = {
-	theme = "solarized_osaka",
-  transparency = false,
+	theme = "tokyodark",
+  transparency = true,
 
   hl_add = {
     NvimTreeOpenedFolderName = {fg = "blue", bold = true},

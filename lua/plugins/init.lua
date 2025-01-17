@@ -1,5 +1,12 @@
 return {
   {
+    "rest-nvim/rest.nvim",
+    lazy = false,
+    config = function()
+      require("rest-nvim").setup()
+    end
+  },
+  {
     "brenoprata10/nvim-highlight-colors",
     config = function()
       require("nvim-highlight-colors").setup {
@@ -91,6 +98,7 @@ return {
 
   {
     "elmcgill/springboot-nvim",
+    lazy = true,
     ft = { "java" },
     dependencies = {
       "neovim/nvim-lspconfig",
@@ -103,7 +111,7 @@ return {
   },
   {
     "JavaHello/spring-boot.nvim",
-    ft = "java",
+    ft = { "java" },
     dependencies = {
       "mfussenegger/nvim-jdtls", -- or nvim-java, nvim-lspconfig
       "ibhagwan/fzf-lua", -- 可选
@@ -144,6 +152,7 @@ return {
   {
     "jonarrien/telescope-cmdline.nvim",
     "jvgrootveld/telescope-zoxide",
+    "chip/telescope-software-licenses.nvim",
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",

@@ -28,10 +28,11 @@ map("t", "<ESC>", "<C-\\><C-n>", { noremap = true, silent = true })
 map("n", "<leader>fs", ":Telescope flutter commands<CR>", { noremap = true, silent = true })
 
 -- java commands
-map("n", "<leader>jr", springboot_nvim.boot_run, { desc = "[J]ava [R]un Spring Boot" })
+-- map("n", "<leader>jr", springboot_nvim.boot_run, { desc = "[J]ava [R]un Spring Boot" })
 map("n", "<leader>jc", springboot_nvim.generate_class, { desc = "[J]ava Create [C]lass" })
 map("n", "<leader>ji", springboot_nvim.generate_interface, { desc = "[J]ava Create [I]nterface" })
 map("n", "<leader>je", springboot_nvim.generate_enum, { desc = "[J]ava Create [E]num" })
+map("n", "<leader>jr", springboot_nvim.generate_record, { desc = "[J]ava Create [R]ecord" })
 
 -- harpoon commands
 
