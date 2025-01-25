@@ -52,8 +52,8 @@ M.nvdash = {
 }
 
 M.base46 = {
-	theme = "tokyodark",
-  transparency = true,
+	theme = "gatekeeper",
+  transparency = false,
 
   hl_add = {
     NvimTreeOpenedFolderName = {fg = "blue", bold = true},
@@ -89,7 +89,8 @@ M.base46 = {
       underdashed = true
     },
     NvimTreeCursorLine = {
-      bg = "one_bg"
+      bg = "one_bg3"
+      -- bg = "red"
     },
     NvDashButtons = {
       bg = "NONE",

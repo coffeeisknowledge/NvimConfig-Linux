@@ -1,10 +1,11 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    css = { "prettier" },
-    html = { "prettier" },
+    css = { "prettierd" },
+    html = { "prettierd" },
     python = { "black" },
-    java = { "google-java-format" }
+    java = { "google-java-format" },
+    json = { "prettierd" }
   },
 
   -- format_on_save = {

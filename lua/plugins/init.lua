@@ -1,10 +1,21 @@
 return {
+  -- {
+  --   "rest-nvim/rest.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("rest-nvim").setup()
+  --   end
+  -- },
   {
     "rest-nvim/rest.nvim",
     lazy = false,
-    config = function()
-      require("rest-nvim").setup()
-    end
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      opts = function(_, opts)
+        opts.ensure_installed = opts.ensure_installed or {}
+        table.insert(opts.ensure_installed, "http")
+      end,
+    },
   },
   {
     "brenoprata10/nvim-highlight-colors",
@@ -111,6 +122,7 @@ return {
   },
   {
     "JavaHello/spring-boot.nvim",
+    lazy = true,
     ft = { "java" },
     dependencies = {
       "mfussenegger/nvim-jdtls", -- or nvim-java, nvim-lspconfig

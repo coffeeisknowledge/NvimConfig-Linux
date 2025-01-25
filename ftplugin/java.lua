@@ -4,6 +4,9 @@ local plugins_dir = jdtls_dir .. "/plugins/"
 local path_to_jar = plugins_dir .. "org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar"
 local path_to_lombok = jdtls_dir .. "/lombok.jar"
 
+
+local springboot_nvim = require("springboot-nvim")
+
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 if root_dir == "" then
@@ -176,6 +179,12 @@ config["on_attach"] = function(_, bufnr)
   vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
   vim.keymap.set("n", "<A-o>", jdtls.organize_imports, bufopts)
+
+  -- springboot commands - emacgill
+  vim.keymap.set("n", "<leader>jc", springboot_nvim.generate_class, { desc = "[J]ava Create [C]lass" })
+  vim.keymap.set("n", "<leader>ji", springboot_nvim.generate_interface, { desc = "[J]ava Create [I]nterface" })
+  vim.keymap.set("n", "<leader>je", springboot_nvim.generate_enum, { desc = "[J]ava Create [E]num" })
+  vim.keymap.set("n", "<leader>jr", springboot_nvim.generate_record, { desc = "[J]ava Create [R]ecord" })
 
   -- jdtls.setup.add_commands()
   vim.lsp.codelens.refresh()

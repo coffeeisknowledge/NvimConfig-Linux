@@ -10,6 +10,12 @@ And after a bit of trial and error (handling the pom.xml file, clearing the cach
 
 by doing so, reopening the project again, jdtls recreated the files and now everything works correctly
 
+# For Json files
+
+Select and format json objects
+
+:%!jq .
+
 # Credits
 
 1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
