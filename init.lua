@@ -49,6 +49,11 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "nvchad.autocmds"
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    command = "setlocal shiftwidth=2"
+})
+
 vim.schedule(function()
   require "mappings"
 end)

@@ -172,13 +172,29 @@ config["on_attach"] = function(_, bufnr)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+  -- vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
+  -- vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
   vim.keymap.set("n", "<A-o>", jdtls.organize_imports, bufopts)
+  vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set("n", "<leader>ic", vim.lsp.buf.incoming_calls, bufopts)
+  vim.keymap.set("n", "<leader>wl", function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+
+
+  -- FZF commands
+  -- vim.keymap.set("n", "gD", "<cmd>FzfLua lsp_declarations<CR>", bufopts)
+  -- vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", bufopts)
+  -- vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", bufopts)
+  -- vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, bufopts)
+
+  vim.keymap.set("n", "<leader>ds", "<cmd>FzfLua lsp_workspace_diagnostics<CR>", bufopts)
+  vim.keymap.set("n", "<leader>D", "<cmd>FzfLua lsp_typedefs<CR>", bufopts)
+  -- vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>FzfLua lsp_code_actions<CR>", bufopts)
+  vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<CR>", bufopts)
 
   -- springboot commands - emacgill
   vim.keymap.set("n", "<leader>jc", springboot_nvim.generate_class, { desc = "[J]ava Create [C]lass" })

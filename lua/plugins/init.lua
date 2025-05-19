@@ -6,6 +6,84 @@ return {
   --     require("rest-nvim").setup()
   --   end
   -- },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   config = function()
+  --     require("configs.null-ls")
+  --   end,
+  --   requires = { "nvim-lua/plenary.nvim" },
+  -- },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
+  {
+    "ibhagwan/fzf-lua",
+    lazy = false,
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    -- or if using mini.icons/mini.nvim
+    -- dependencies = { "echasnovski/mini.icons" },
+    opts = {
+      previewers = {
+        bat = {
+          cmd = "batcat",
+          args = "--color=always --style=numbers,changes",
+        },
+      },
+    },
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>dt",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>db",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>lL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>lQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
   {
     "rest-nvim/rest.nvim",
     lazy = false,
@@ -134,34 +212,57 @@ return {
     "mfussenegger/nvim-jdtls",
   },
 
-  {
-    "akinsho/flutter-tools.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim", -- optional for vim.ui.select
-    },
-    lazy = true,
-    ft = { "dart", "yaml" },
-    -- config = true,
-    config = function()
-      require("flutter-tools").setup {
-        -- decorations = {
-        --   statusline = {
-        --     app_version = true,
-        --     device = true,
-        --     project_config = true,
-        --   },
-        -- },
-        -- fvm = true,
-      } -- use defaults
-    end,
-  },
+  -- {
+  --   "nvim-flutter/flutter-tools.nvim",
+  --   lazy = true,
+  --   ft = { "dart", "yaml" },
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "stevearc/dressing.nvim", -- optional for vim.ui.select
+  --   },
+    -- config = function()
+    --   require("flutter-tools").setup {
+    --     lsp = {
+    --       on_attach = require("nvchad.configs.lspconfig").on_attach,
+    --       capabilities = require("nvchad.configs.lspconfig").capabilities,
+    --     },
+    --     fvm = true,
+    --     widget_guides = {
+    --       enabled = true,
+    --     }
+    --   }
+    -- end,
+  -- },
+
+  -- {
+  --   "akinsho/flutter-tools.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "stevearc/dressing.nvim", -- optional for vim.ui.select
+  --   },
+  --   lazy = true,
+  --   ft = { "dart", "yaml" },
+  --   -- config = true,
+  --   config = function()
+  --     require("flutter-tools").setup {
+  --       -- decorations = {
+  --       --   statusline = {
+  --       --     app_version = true,
+  --       --     device = true,
+  --       --     project_config = true,
+  --       --   },
+  --       -- },
+  --       -- fvm = true,
+  --     } -- use defaults
+  --   end,
+  -- },
 
   {
     "tpope/vim-fugitive",
     cmd = { "G", "Git" },
   },
   {
+    "LukasPietzschmann/telescope-tabs",
     "jonarrien/telescope-cmdline.nvim",
     "jvgrootveld/telescope-zoxide",
     "chip/telescope-software-licenses.nvim",
@@ -238,13 +339,13 @@ return {
         "typescript-language-server",
         "eslint-lsp",
         "tailwindcss-language-server",
-        "clangd",
+        -- "clangd",
         "angular-language-server",
-        "csharp-language-server",
-        "deno",
+        -- "csharp-language-server",
+        -- "deno",
         "json-lsp",
-        "rust-analyzer",
-        "vetur-vls",
+        -- "rust-analyzer",
+        -- "vetur-vls",
         "jdtls",
       },
     },

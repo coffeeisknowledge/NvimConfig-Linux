@@ -3,6 +3,21 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client == nil then
+      return
+    end
+    if client.name == "ruff" then
+      -- Disable hover in favor of Pyright
+      client.server_capabilities.hoverProvider = false
+    end
+  end,
+  desc = "LSP: Disable hover capability from Ruff",
+})
+
 -- EXAMPLE
 -- local servers = { "html", "cssls" }
 local nvlsp = require "nvchad.configs.lspconfig"
@@ -58,7 +73,7 @@ lspconfig.ts_ls.setup {
     "typescript",
     "typescriptreact",
     "typescript.tsx",
-    "vue",
+    -- "vue",
   },
 }
 
@@ -79,7 +94,27 @@ lspconfig.pyright.setup {
   on_attach = nvlsp.on_attach,
   capabilities = nvlsp.capabilities,
   on_init = nvlsp.on_init,
-  filetypes = { "python" },
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        ignore = { "*" },
+      },
+    },
+  },
+}
+
+lspconfig.ruff.setup {
+  -- init_options = {
+  --   settings = {
+  --     configuration = "/home/aberu/ruff.toml",
+  --     -- lint = {
+  --     --   enable = true,
+  --     -- },
+  --   },
+  -- },
 }
 
 -- angular
@@ -94,11 +129,11 @@ lspconfig.angularls.setup {
 }
 
 -- tailwind css
-lspconfig.tailwindcss.setup {
-  on_attach = nvlsp.on_attach,
-  capabilities = nvlsp.capabilities,
-  on_init = nvlsp.on_init,
-}
+-- lspconfig.tailwindcss.setup {
+--   on_attach = nvlsp.on_attach,
+--   capabilities = nvlsp.capabilities,
+--   on_init = nvlsp.on_init,
+-- }
 
 -- eslint Next
 lspconfig.eslint.setup {
@@ -106,3 +141,4 @@ lspconfig.eslint.setup {
   capabilities = nvlsp.capabilities,
   on_init = nvlsp.on_init,
 }
+
